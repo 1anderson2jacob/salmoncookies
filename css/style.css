@@ -1,0 +1,6 @@
+table th, table td {
+  padding: 6px 13px;
+  border: 1px solid #6d7b91;
+  display: table-cell;
+  vertical-align: inherit;
+}
