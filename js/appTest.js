@@ -5,10 +5,13 @@ var hours = ['6am', '7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4p
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min; //from mdn docs
 }
+function newElement(type, content, parent) {
+  var element = document.createElement(type);
+  element.textContent = content;
+  parent.appendChild(element);
+}
+
 function Store(locationName, minCustPerHour, maxCustPerHour, avgCookies, id) {
-  // customersEachHour: [],
-  // cookiesEachHour: [],
-  // totalDailyCookies: 0
   this.locationName = locationName;
   this.minCustPerHour = minCustPerHour;
   this.maxCustPerHour = maxCustPerHour;
@@ -16,6 +19,7 @@ function Store(locationName, minCustPerHour, maxCustPerHour, avgCookies, id) {
   this.customersEachHour = [];
   this.cookiesEachHour = []
   this.id = id;
+  this.totalDailyCookies = 0;
   Store.all.push(this); //an array that holds all instances created w/ this constructor
 }
 
@@ -27,9 +31,9 @@ Store.prototype.calcCustomersEachHour = function() {
     this.customersEachHour[i] = randomCustomers;
   }
 }
-/*
+
 Store.prototype.calcCookiesEachHour = function() {
-  Store.calcCustomersEachHour();
+  this.calcCustomersEachHour();
   for (var i = 0; i < hours.length; i++) {
     var hourlyCookies = Math.ceil(this.customersEachHour[i] * this.avgCookies);
     this.cookiesEachHour[i] = hourlyCookies;
@@ -64,7 +68,8 @@ new Store('Alki', 2, 16, 4.6, 'alki');
 
 for(var i = 0; i < Store.all.length; i++) {
   Store.all[i].render();
+  console.log(`Store index ${i} rendered`);
 }
 
 //      ! sales.html is using appTest.js !
-*/
+
