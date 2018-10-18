@@ -2,7 +2,8 @@
 
 var hours = ['6am', '7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm', '6pm', '7pm']
 
-var cookieTable = document.getElementById('cookies');
+var cookieTable = document.getElementById('cookieTable');
+var cookieForm = document.getElementById('cookieForm');
 
 function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min; //from mdn docs
@@ -64,14 +65,13 @@ function makeHeader() {
 //   cookieTable.appendChild(trEl);
 // }
 
-function Store(locationName, minCustPerHour, maxCustPerHour, avgCookies, id) {
+function Store(locationName, minCustPerHour, maxCustPerHour, avgCookies) {
   this.locationName = locationName;
   this.minCustPerHour = minCustPerHour;
   this.maxCustPerHour = maxCustPerHour;
   this.avgCookies = avgCookies;
   this.customersEachHour = [];
   this.cookiesEachHour = []
-  this.id = id;
   this.totalDailyCookies = 0;
   Store.all.push(this); //an array that holds all instances created w/ this constructor
 }
@@ -111,11 +111,11 @@ Store.prototype.renderRow = function() {
 
 }
 
-new Store('First and Pike', 23, 65, 6.3, 'pike');
-new Store('SeaTac Airport', 3, 24, 1.2, 'seatac');
-new Store('Seattle Center', 11, 38, 2.3, 'seattlecenter');
-new Store('Capitol Hill', 20, 28, 2.3, 'capitolhill');
-new Store('Alki', 2, 16, 4.6, 'alki');
+new Store('First and Pike', 23, 65, 6.3);
+new Store('SeaTac Airport', 3, 24, 1.2);
+new Store('Seattle Center', 11, 38, 2.3);
+new Store('Capitol Hill', 20, 28, 2.3);
+new Store('Alki', 2, 16, 4.6);
 
 makeHeader();
 
