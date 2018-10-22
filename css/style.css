@@ -4,3 +4,12 @@ table th, table td {
   display: table-cell;
   vertical-align: inherit;
 }
+table th{
+  font-weight: bolder;
+}
+body{
+  background-color: salmon;
+}
+#title{
+  font-size: 60px;
+}
